@@ -6,7 +6,8 @@ class InvalidException extends Exception{
     }
 }
 enum MoodAnalysisError{
-    NULL("mood can't be null or empty"),
+    NULL("mood can't be Null "),
+    EMPTY("mood can't be Empty")
     ;
 
     public String msg;
@@ -66,9 +67,13 @@ public class Mood_Analayser extends Exception {
     }
     public static void Validate(String message1) throws InvalidException{
 
-        if(message1.toLowerCase().equals("null") || message1.length()==0){
+        if(message1.toLowerCase().equals("null")){
             throw new InvalidException(MoodAnalysisError.NULL);
 
+        }
+
+        if(message1.length()==0){
+            throw new InvalidException(MoodAnalysisError.EMPTY);
         }
 
     }
