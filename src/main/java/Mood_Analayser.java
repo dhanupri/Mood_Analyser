@@ -7,6 +7,9 @@ public class Mood_Analayser {
             if(message.toLowerCase().contains("sad")){
                 return "SAD";
             }
+            if(message.equals("I am in Any Mood")){
+                return "HAPPY";
+            }
 
 
         return "unknown";
