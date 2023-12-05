@@ -1,8 +1,27 @@
 import javax.swing.plaf.synth.SynthDesktopIconUI;
 import java.util.Scanner;
 class InvalidException extends Exception{
-    InvalidException(String message){
-        super(message);
+    InvalidException(MoodAnalysisError message){
+        super(message.getMsg());
+    }
+}
+enum MoodAnalysisError{
+    NULL("mood can't be null or empty"),
+    ;
+
+    public String msg;
+
+
+    MoodAnalysisError(String s) {
+        this.msg=s;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }
 
@@ -31,13 +50,13 @@ public class Mood_Analayser extends Exception {
 
     String analyseMood() {
 
-            if(message.equals("I am in Sad Mood")){
+            if(message.toLowerCase().contains("sad")){
                 return "SAD";
             }
             if(message.equals("I am in Any Mood")){
                 return "HAPPY";
             }
-            if(message.equals("I am in Happy Mood")){
+            if(message.toLowerCase().contains("happy")){
                 return "HAPPY";
             }
 
@@ -48,7 +67,7 @@ public class Mood_Analayser extends Exception {
     public static void Validate(String message1) throws InvalidException{
 
         if(message1.toLowerCase().equals("null") || message1.length()==0){
-            throw new InvalidException("User input can't be Null or Empty");
+            throw new InvalidException(MoodAnalysisError.NULL);
 
         }
 
@@ -77,7 +96,7 @@ public class Mood_Analayser extends Exception {
 
         System.out.println("The mood is :"+mood);
         } catch (InvalidException e) {
-            System.out.println("HAPPY");
+          System.err.println("ERROR:"+e.getMessage());
 
 
         }
