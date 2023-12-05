@@ -24,10 +24,13 @@ public class Mood_Analayser {
 
     String analyseMood(){
 
-            if(message.toLowerCase().contains("sad")){
+            if(message.equals("I am in Sad Mood")){
                 return "SAD";
             }
             if(message.equals("I am in Any Mood")){
+                return "HAPPY";
+            }
+            if(message.equals("I am in Happy Mood")){
                 return "HAPPY";
             }
 
