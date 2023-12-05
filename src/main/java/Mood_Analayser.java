@@ -1,3 +1,4 @@
+import javax.swing.plaf.synth.SynthDesktopIconUI;
 import java.util.Scanner;
 class InvalidException extends Exception{
     InvalidException(String message){
@@ -76,7 +77,8 @@ public class Mood_Analayser extends Exception {
 
         System.out.println("The mood is :"+mood);
         } catch (InvalidException e) {
-            System.err.println("Error"+e.getMessage());
+            System.out.println("HAPPY");
+
 
         }
 
